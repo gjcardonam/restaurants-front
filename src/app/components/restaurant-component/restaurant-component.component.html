@@ -1,0 +1,52 @@
+<div style="margin: 20px">
+  <form #formularioRestaurants="ngForm" (ngSubmit)="getRestaurants()">
+  <mat-form-field appearance="fill">
+    <mat-label>Latitud</mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="Ingrese la Longitud"
+      class="custom-input"
+      name="latitude"
+      [(ngModel)]="lat"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Longitud</mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="Ingrese la Latitud"
+      class="custom-input"
+      name="longitude"
+      [(ngModel)]="lon"
+      required
+    />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    Encontrar Restaurantes
+  </button>
+</form>
+
+<div style="margin-top: 40px">
+  <div style="float: left; width: 30%">
+    <ngx-datatable
+      class="dark"
+      [rows]="restaurants"
+      [columnMode]="ColumnMode.force"
+      [columns]="columns"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      rowHeight="auto"
+      [selectCheck]="checkSelectable"
+      [selected]="selected"
+      [selectionType]="SelectionType.multi"
+      (activate)="onActivate($event)"
+      (select)="onSelect($event)"
+    >
+    </ngx-datatable>
+  </div>
+</div>
+</div>
